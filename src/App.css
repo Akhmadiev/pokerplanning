@@ -1,38 +1,56 @@
-.App {
+.board-square {
+    position: fixed;
+    bottom: 10%;
+    width: 50%;
+    left: 1%;
+  }
+  
+.players {
+  margin-left: 1%;
+}
+
+.player-card {
+  border-radius: 10px;
+  height: 100px;
+  width: 70px;
+  margin: 5px;
+  background: content-box radial-gradient(lightgreen, skyblue);;
+  border-color: black;
+  border: thick double #32a1ce;
+  text-align: center;
+  
+}
+
+.player-card span{
+  margin-top: 50%;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.player-name {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.board-el {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.player-component {
+  display: inline-block;
+  font-size: large;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.player-reveal {
+  margin-top: 1%;
+  margin-left: 1%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tasks {
+  width: 30%;
+  position: fixed;
+  right: 1%;
+  top: 10%;
 }

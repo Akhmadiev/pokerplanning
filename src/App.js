@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Players from './Players';
+import Tasks from './Tasks';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+
+class App extends React.Component {
+constructor(props){
+    super(props);
+
+    this.state = {
+        admin: "Marat",
+        tasks: Array(0),
+        tasksVotes: Array(0),
+    };
+}
+
+handleOnTaskDelete = (i) => {
+    var tasks = this.state.tasks;
+    tasks = tasks.filter((value, index) => index !== i);
+    this.setState({tasks:tasks});
+};
+
+
+
+    render() {
+        return (
+          <div>
+              <Players numbers={fibonacci_numbers}/>
+              <Tasks onTaskClick={(i) => this.handleOnTaskDelete(i)} numbers={fibonacci_numbers}/>
+          </div>
+        );
+      }
 }
 
 export default App;
