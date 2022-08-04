@@ -20,7 +20,7 @@ class Board extends React.Component {
 
     renderSquare(i) {
       return (
-        <button key={i} type="button" className="btn btn-secondary board-el" onClick={() => this.handeClick(i)} style={{backgroundColor: this.state.actives[i] ? "black" : ""}}>
+        <button disabled={this.props.playersDisabled} key={i} type="button" className="btn btn-secondary board-el" onClick={() => this.props.onPlayerSelect(this.props.numbers[i])} style={{backgroundColor: this.state.actives[i] ? "black" : ""}}>
             {this.props.numbers[i]}
         </button>
       );

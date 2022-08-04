@@ -23,9 +23,9 @@ class Task extends React.Component {
                     aria-label="JIRA"
                     aria-describedby="basic-addon2"
                     onChange={this.props.onChange}
-                    style={{backgroundColor: this.props.vote ? "#90EE90" : ""}}/>
+                    style={{backgroundColor: this.props.selected ? "#90EE90" : ""}}/>
                 <div className="input-group-append">
-                    <button hidden={this.props.delete ? false : true} onClick={this.props.onVote} style={{backgroundColor: "#90EE90"}} className="btn btn-outline-secondary" type="button">Vote</button>
+                    <button hidden={this.props.delete ? false : true} onClick={this.props.onVoteSelect} style={{backgroundColor: "#90EE90"}} className="btn btn-outline-secondary" type="button">Vote</button>
                     <button onClick={this.props.onClick} style={{backgroundColor: this.props.delete ? "#FFCCCB" : "#90EE90"}} className="btn btn-outline-secondary" type="button">{this.props.delete ? "Delete" : "Add"}</button>
                 </div>
             </div>

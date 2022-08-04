@@ -54,3 +54,16 @@
   right: 1%;
   top: 10%;
 }
+
+.parentDisable {
+  position: fixed;
+  background: #000;
+  opacity: 0.9;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+#popup{
+  position: absolute;
+  z-index: 2;}

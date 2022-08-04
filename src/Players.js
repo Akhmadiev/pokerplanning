@@ -19,11 +19,15 @@ class Players extends React.Component {
     render() {
         return (
           <div>
-            <Board numbers={this.props.numbers}/>
+            <Board
+              playersDisabled={this.props.playersDisabled}
+              onPlayerSelect={(value) => this.props.onPlayerSelect(value)}
+              numbers={this.props.numbers}/>
             <div className="players">
-              <Player value={this.props.value} name="Marat" visible={this.state.visible}/>
+              <Player
+                value={this.props.value} name="Marat" visible={this.state.visible}/>
             </div>
-            <button onClick={() => this.handeClick()} type="button" className="btn btn-primary btn-lg player-reveal" disabled={this.state.revealDisabled}>Reveal</button>
+            <button onClick={() => this.handeClick()} type="button" className="btn btn-primary btn-lg player-reveal" disabled={this.props.playersDisabled || this.state.revealDisabled}>Reveal</button>
           </div>
         );
         }
