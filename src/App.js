@@ -1,39 +1,62 @@
 import React from 'react';
 import Players from './Players';
 import Tasks from './Tasks';
+import { usePlayers } from './Hooks/usePlayers';
+import { useMutation } from 'react-query'
+import { QueryService } from './Services/QueryService';
 
 const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
 
-class App extends React.Component {
-constructor(props){
-    super(props);
+function GetData(props) {
+  const comp = props.component;
+  const { data, isLoading } = usePlayers();
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
-    var players = [{name: this.props.player, vote: 0}];
-
-    this.state = {
-        admin: "Marat",
-        playerName: this.props.player,
-        tasks: Array(0),
-        players: players,
-        playersDisabled: true
-    };
+  return <div>
+        <Players
+          players={data.data}
+          playersDisabled={comp.state.playersDisabled}
+          numbers={fibonacci_numbers}
+          onPlayerSelect={(value) => comp.handeOnPlayerSelect(value)} />
+        <Tasks
+          tasks={comp.state.tasks}
+          numbers={fibonacci_numbers}
+          onVoteSelect={(i) => comp.handleOnVoteSelect(i)}
+          onTaskDelete={(i) => comp.handleOnTaskDelete(i)}
+          onUpdateVoteValue={(evt, i) => comp.hanldeOnUpdateVoteValue(evt, i)}
+          onTaskAdd={(value) => comp.handleOnTaskAdd(value)} />
+  </div>
 }
 
-handleOnTaskDelete = (i) => {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      admin: "Marat",
+      playerName: this.props.player,
+      tasks: Array(0),
+      playersDisabled: true
+    };
+  }
+
+  handleOnTaskDelete = (i) => {
     var tasks = this.state.tasks;
     tasks = tasks.filter((value, index) => index !== i);
-    this.setState({tasks:tasks});
-};
+    this.setState({ tasks: tasks });
+  };
 
-handleOnTaskAdd = (value) => {
+  handleOnTaskAdd = (value) => {
     var tasks = this.state.tasks;
 
-    if (tasks.map(x => x.value).includes(value) || !value){
+    if (tasks.map(x => x.value).includes(value) || !value) {
       return;
     }
 
-    tasks.push({value: value, selected: false, vote: 0});
-    this.setState({tasks: tasks});
+    tasks.push({ value: value, selected: false, vote: 0 });
+    this.setState({ tasks: tasks });
   };
 
   hanldeOnUpdateVoteValue(evt, i) {
@@ -44,8 +67,8 @@ handleOnTaskAdd = (value) => {
     var sum = tasks.map(x => x.vote).reduce((s, a) => s + a, 0);
 
     this.setState({
-        tasks: tasks,
-        total: sum
+      tasks: tasks,
+      total: sum
     });
   }
 
@@ -56,7 +79,7 @@ handleOnTaskAdd = (value) => {
     tasks.forEach(x => x.selected = false);
     tasks[i].selected = selected;
 
-    this.setState({tasks: tasks, playersDisabled: !selected});
+    this.setState({ tasks: tasks, playersDisabled: !selected });
   }
 
   handeOnPlayerSelect(value) {
@@ -66,27 +89,34 @@ handleOnTaskAdd = (value) => {
     players[playerIndex] = value;
 
     this.setState({
-        players: players
+      players: players
     });
   }
 
-    render() {
-        return (
-          <div>
-              <Players
-                playersDisabled={this.state.playersDisabled}
-                numbers={fibonacci_numbers}
-                onPlayerSelect={(value) => this.handeOnPlayerSelect(value)}/>
-              <Tasks
-                tasks={this.state.tasks}
-                numbers={fibonacci_numbers}
-                onVoteSelect={(i) => this.handleOnVoteSelect(i)}
-                onTaskDelete={(i) => this.handleOnTaskDelete(i)}
-                onUpdateVoteValue={(evt, i) => this.hanldeOnUpdateVoteValue(evt, i)}
-                onTaskAdd={(value) => this.handleOnTaskAdd(value)}/>
-          </div>
-        );
-      }
+  render() {
+    debugger;
+    // const { isLoading, mutateAsync } = useMutation(
+    //   'create country',
+    //   (data) => CountryService.create(data),
+    //   {
+    //     onSuccess: () => {
+    //       push('/')
+    //     },
+    //     onError: (error) => {
+    //       alert(error.message)
+    //     },
+    //   }
+    // )
+  
+    // handleSubmit = async (e) => {
+    //   e.preventDefault()
+    //   await mutateAsync(data)
+    // }
+
+    return (
+      <GetData component={this} />
+    );
+  }
 }
 
 export default App;

@@ -64,6 +64,19 @@
   width: 100%;
 }
 
-#popup{
+#popup  {
   position: absolute;
-  z-index: 2;}
+  z-index: 2;
+}
+
+.rooms {
+  margin-left: 5%;
+}
+
+.room {
+  width: 50%;
+}
+
+table, th, td {
+  border:1px solid black;
+}
