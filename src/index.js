@@ -9,6 +9,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import NewRoom from './NewRoom';
 import Room from './Room';
+import { RequireAuth } from './hoc/RequireAuth';
+import Login from './Login';
 
 class Game extends React.Component {
 
@@ -26,7 +28,14 @@ class Game extends React.Component {
   };
 
   render() {
-    const queryClient = new QueryClient();
+    const queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false,
+          refetchInterval: 2000
+        }
+      },
+    });
 
     return (
       <React.StrictMode>
@@ -34,8 +43,9 @@ class Game extends React.Component {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Rooms />} />
-              <Route path="/:id" element={<Room />} />
-              <Route path="/new" element={<NewRoom />} />
+              <Route path=":id" element={<RequireAuth><Room /></RequireAuth>} />
+              <Route path="new" element={<NewRoom />} />
+              <Route path="login" element={<Login />} />
             </Routes>
           </BrowserRouter>
         </QueryClientProvider>

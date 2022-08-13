@@ -6,6 +6,7 @@ import { QueryService } from './Services/QueryService';
 import { useQuery } from 'react-query';
 import Players from './Players';
 import Tasks from './Tasks';
+import Votes from './Votes';
 
 const Room = (props) => {
     const { id } = useParams();
@@ -22,6 +23,7 @@ const Room = (props) => {
         <div>
             <Players players={players} />
             <Tasks tasks={tasks} />
+            <Votes tasks={tasks} players={players} />
         </div>
     )
 }

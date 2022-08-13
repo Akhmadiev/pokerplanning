@@ -1,33 +1,32 @@
 import React from 'react';
 import Players from './Players';
 import Tasks from './Tasks';
-import { usePlayers } from './Hooks/usePlayers';
 import { useMutation } from 'react-query'
 import { QueryService } from './Services/QueryService';
 
 const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
 
 function GetData(props) {
-  const comp = props.component;
-  const { data, isLoading } = usePlayers();
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // const comp = props.component;
+  // const { data, isLoading } = usePlayers();
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
-  return <div>
-        <Players
-          players={data.data}
-          playersDisabled={comp.state.playersDisabled}
-          numbers={fibonacci_numbers}
-          onPlayerSelect={(value) => comp.handeOnPlayerSelect(value)} />
-        <Tasks
-          tasks={comp.state.tasks}
-          numbers={fibonacci_numbers}
-          onVoteSelect={(i) => comp.handleOnVoteSelect(i)}
-          onTaskDelete={(i) => comp.handleOnTaskDelete(i)}
-          onUpdateVoteValue={(evt, i) => comp.hanldeOnUpdateVoteValue(evt, i)}
-          onTaskAdd={(value) => comp.handleOnTaskAdd(value)} />
-  </div>
+  // return <div>
+  //       <Players
+  //         players={data.data}
+  //         playersDisabled={comp.state.playersDisabled}
+  //         numbers={fibonacci_numbers}
+  //         onPlayerSelect={(value) => comp.handeOnPlayerSelect(value)} />
+  //       <Tasks
+  //         tasks={comp.state.tasks}
+  //         numbers={fibonacci_numbers}
+  //         onVoteSelect={(i) => comp.handleOnVoteSelect(i)}
+  //         onTaskDelete={(i) => comp.handleOnTaskDelete(i)}
+  //         onUpdateVoteValue={(evt, i) => comp.hanldeOnUpdateVoteValue(evt, i)}
+  //         onTaskAdd={(value) => comp.handleOnTaskAdd(value)} />
+  // </div>
 }
 
 class App extends React.Component {

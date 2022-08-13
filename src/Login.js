@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
-import './App.css';
-import { useMutation } from 'react-query';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 import { QueryService } from './Services/QueryService';
+import { useMutation } from 'react-query';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { v4 } from 'uuid';
 
-const CreatePlayer = () => {
-    const [playerData, setPlayerData] = useState('');
-    const { isLoading, isError, error, mutate } = useMutation(async () => { await QueryService.createUser(1, playerData) },
-        {
-            onSuccess: (data) => {
-
-            }
-        });
+const Login = () => {
+    const [userData, setUserData] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const fromPage = location.state?.from?.pathname || '/';
+    const { isLoading, isError, error, mutate } = useMutation(async () => { await QueryService.createUser(fromPage.replace('/', ''), userData) },
+    {
+        onSuccess: () => {
+            const cookies = new Cookies();
+            cookies.set('PlanningAuth', userData, { path: '/' });
+            navigate(fromPage, { replace: true });
+        }
+    });
 
     const onChange = (evt) => {
         var value = evt.target.value;
-        setPlayerData({id: v4(), name: value});
+        setUserData({name: value});
     }
 
     return (
@@ -31,7 +36,7 @@ const CreatePlayer = () => {
                     aria-describedby="basic-addon2" />
                 <div className="input-group-append">
                     <button
-                        onClick={() => mutate({name: "test"})}
+                        onClick={() => mutate()}
                         className="btn btn-outline-secondary"
                         type="button"
                         style={{ backgroundColor: "#90EE90" }}>
@@ -43,4 +48,4 @@ const CreatePlayer = () => {
     );
 }
 
-export default CreatePlayer;
+export default Login;
