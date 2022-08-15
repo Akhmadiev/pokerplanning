@@ -10,7 +10,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const fromPage = location.state?.from?.pathname || '/';
-    const { isLoading, isError, error, mutate } = useMutation(async () => { await QueryService.createUser(fromPage.replace('/', ''), userData) },
+    const { mutate } = useMutation(async () => { await QueryService.createUser(fromPage.replace('/', ''), userData) },
     {
         onSuccess: () => {
             const cookies = new Cookies();
@@ -26,7 +26,8 @@ const Login = () => {
 
     return (
         <div>
-            <div className="input-group mb-3" style={{ width: "20%", left: "40%", top: "40%" }}>
+            <div class="loginBackground"></div>
+            <div className="input-group mb-3" style={{ position: "fixed", top: "35%", width: "30%", height: "5%", left: "35%" }}>
                 <input
                     onChange={(evt) => onChange(evt)}
                     type="text"
@@ -39,7 +40,7 @@ const Login = () => {
                         onClick={() => mutate()}
                         className="btn btn-outline-secondary"
                         type="button"
-                        style={{ backgroundColor: "#90EE90" }}>
+                        style={{ backgroundColor: "#90EE90", height: "100%" }}>
                         Login
                     </button>
                 </div>

@@ -1,79 +1,65 @@
 import React from 'react';
-import Player from './Player';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Board from './Board';
-import { useMutation } from 'react-query';
 import { QueryService } from './Services/QueryService';
+import { useMutation } from 'react-query';
+import { useLocation } from 'react-router-dom';
 
+const Players = (props) => {
+  const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  const location = useLocation();
+  const fromPage = location.pathname || '/';
+  const room = props.room;
+  const users = room.players;
+  const votes = room.tasks.filter(x => x.id == room.voteTaskId)[0]?.votes;
+  const reveal = useMutation(async () => {
+    var voteSum = 0;
+    var stop = false;
+    room.tasks.forEach((x) => {
+      if (x.id === room.voteTaskId) {
+        voteSum = x.votes.reduce((a, v) => a = a + v.vote, 0);
+        voteSum = voteSum / x.votes.length;
+        fibonacci_numbers.forEach((number, index) => {
+          if (!stop && voteSum <= number) {
+            if (index === 0) {
+              voteSum = fibonacci_numbers[index];
+            } else if (index === fibonacci_numbers.length - 1) {
+              voteSum = fibonacci_numbers[fibonacci_numbers.length - 1];
+            } else {
+              const dif_a = voteSum - fibonacci_numbers[index];
+              const dif_b = voteSum - fibonacci_numbers[index + 1];
+              if (Math.abs(dif_b) < Math.abs(dif_a)) {
+                voteSum = fibonacci_numbers[index + 1];
+              } else {
+                voteSum = fibonacci_numbers[index];
+              }
+            }
+            stop = true;
+          }
+        });
+      }
+    });
 
-// class Players extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       visible: false
-//     }
-//   }
-
-//   handeClick() {
-//     this.setState({ visible: !this.state.visible });
-//   }
-//   render() {
-//     var rows = [];
-//     for (let i = 0; i < this.props.players.length; i++) {
-//       rows.push(<Player
-//         value={this.props.value} name={this.props.players[i].title} visible={this.state.visible} />);
-//     }
-
-
-//     return (
-//       <div>
-//         <Board
-//           playersDisabled={this.props.playersDisabled}
-//           onPlayerSelect={(value) => this.props.onPlayerSelect(value)}
-//           numbers={this.props.numbers} />
-//         <div className="players">
-//           {rows}
-//         </div>
-//         <button onClick={() => this.handeClick()} type="button" className="btn btn-primary btn-lg player-reveal" disabled={this.props.playersDisabled || this.state.revealDisabled}>Reveal</button>
-//       </div>
-//     );
-//   }а
-// }
-
-const Players = (props) =>
-{
-  // const { data, isLoading } = usePlayers();
-  
-  // if (isLoading) {
-  //   return <h1>Loading...</h1>
-  // }
-
-  const players = props.players;
-  // const {data, error, isError, isLoading } = useQuery('posts', fetchPosts) // first argument is a string to cache and track the query result
-  // if(isLoading){
-  //     return <div>Loading...</div>
-  // }
-  // if(isError){
-  //     return <div>Error! {error.message}</div>
-  // }
+    await QueryService.revealCards(fromPage.replace('/', ''), room.voteTaskId, voteSum);
+  });
 
   var rows = [];
-  for (let i = 0; i < players.length; i++) {
-    rows.push(<Player
-      value={players[i].name} name={players[i].name} visible={true} />);
+  for (let i = 0; i < users.length; i++) {
+    const player = users[i];
+    const vote = votes?.filter(x => x.userId === player.id)[0]?.vote;
+
+    rows.push(<div className="player-component">
+      <div className="player-card" style={{ background: vote > 0 ? "content-box radial-gradient(lightgreen, blue)" : "content-box radial-gradient(lightgreen, skyblue)" }}><span style={{ visibility: room.reveal ? "visible" : "hidden" }}>{vote}</span></div>
+      <div className="player-name">{player.name}</div>
+    </div>);
   }
 
   return (
     <div>
-      {/* <Board
-        playersDisabled={this.props.playersDisabled}
-        onPlayerSelect={(value) => this.props.onPlayerSelect(value)}
-        numbers={this.props.numbers} /> */}
       <div className="players">
         {rows}
       </div>
-      <button type="button" className="btn btn-primary btn-lg player-reveal">Reveal</button>
+      <button type="button" className="btn btn-primary btn-lg player-reveal" onClick={() => reveal.mutate()}>Reveal</button>
     </div>
   );
 }

@@ -1,141 +1,330 @@
 {
   "rooms": [
     {
-      "name": "1",
-      "id": "e04204fc-0ed9-4684-b750-2b6d3f991b1f",
-      "tasks": [],
+      "name": "fw",
+      "voteTaskId": "1588bc2e-ec14-4c8d-b6b8-d188f83ec953",
+      "id": "bc3e4ad9-afa0-4b20-9aa5-37a0db32f050",
+      "tasks": [
+        {
+          "value": "fw",
+          "vote": 47,
+          "votes": [
+            {
+              "userId": "eac98d92-55b1-4ab0-8460-07335db50feb",
+              "vote": 13
+            },
+            {
+              "userId": "06028d63-a18e-4734-9ff3-8a0dbe932884",
+              "vote": 34
+            }
+          ],
+          "id": "039ff7d2-a507-494d-a6af-48876868ac54"
+        },
+        {
+          "value": "ggg",
+          "vote": 89,
+          "votes": [
+            {
+              "userId": "06028d63-a18e-4734-9ff3-8a0dbe932884",
+              "vote": 89
+            }
+          ],
+          "id": "1588bc2e-ec14-4c8d-b6b8-d188f83ec953"
+        },
+        {
+          "value": "ggg",
+          "vote": 89,
+          "votes": [
+            {
+              "userId": "06028d63-a18e-4734-9ff3-8a0dbe932884",
+              "vote": 89
+            }
+          ],
+          "id": "1588bc2e-ec14-4c8d-b6b8-d188f83ec953"
+        }
+      ],
       "players": [
         {
-          "name": "marat",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
-        },
-        {
-          "name": "marats",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
-        },
-        {
-          "name": "j",
-          "id": "607f0b13-15a1-40cc-86a8-7a5b9f116512",
-          "createDate": "2022-08-13T00:14:03.704Z"
-        },
-        {
-          "name": "q",
-          "id": "7e04cb5d-cc67-4053-86c9-8a0804275282",
-          "createDate": "2022-08-13T00:21:08.330Z"
-        },
-        {
-          "name": "gagsagas",
-          "id": "f6bd144d-c0a6-4597-af5e-be609c155ecc",
-          "createDate": "2022-08-13T00:23:29.152Z"
-        },
-        {
-          "name": "hhhh",
-          "id": "f5de5fb4-47c4-4d4d-82f9-a8f0484bea55",
-          "createDate": "2022-08-13T00:23:48.577Z"
+          "name": "h",
+          "id": "eac98d92-55b1-4ab0-8460-07335db50feb"
         },
         {
           "name": "g",
           "id": "06028d63-a18e-4734-9ff3-8a0dbe932884",
           "createDate": "2022-08-13T00:45:23.666Z"
-        }
-      ],
-      "createDate": "2022-08-12T23:13:21.935Z"
-    },
-    {
-      "name": "2",
-      "id": "19be9ded-7886-4505-ba75-75efc7e8469e",
-      "tasks": [],
-      "players": [],
-      "createDate": "2022-08-12T23:13:39.320Z"
-    },
-    {
-      "name": "xxxx",
-      "id": "bdd46d48-17d6-4512-9420-4323233ad79a",
-      "tasks": [],
-      "players": [
+        },
         {
-          "name": "marat",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
+          "name": "Marat",
+          "id": "9f2ce551-bb72-4d60-b972-eb14cd235cc4"
+        },
+        {
+          "name": "s",
+          "id": "d43fbd92-6b25-46f4-8854-3a0cfc2374e3"
         },
         {
           "name": "g",
-          "id": "06028d63-a18e-4734-9ff3-8a0dbe932884",
-          "createDate": "2022-08-13T00:45:23.666Z"
-        }
-      ],
-      "createDate": "2022-08-13T00:28:07.914Z"
-    },
-    {
-      "name": "vava",
-      "id": "2ea253c1-c0a4-4531-acf6-34512da8dd6b",
-      "tasks": [],
-      "players": [
+          "id": "a53365e7-1bb3-482b-8d3e-2d2e96198261"
+        },
         {
-          "name": "marat",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
+          "name": "asd",
+          "id": "a96da38a-9868-49f2-b268-697914d90dbf"
         },
         {
           "name": "g",
-          "id": "06028d63-a18e-4734-9ff3-8a0dbe932884",
-          "createDate": "2022-08-13T00:45:23.666Z"
-        }
-      ],
-      "createDate": "2022-08-13T00:29:33.728Z"
-    },
-    {
-      "name": "h",
-      "id": "ea61adf8-8bee-4277-8489-f2e798df80f9",
-      "tasks": [],
-      "players": [
-        {
-          "name": "marat",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
         },
         {
           "name": "g",
-          "id": "06028d63-a18e-4734-9ff3-8a0dbe932884",
-          "createDate": "2022-08-13T00:45:23.666Z"
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "g",
+          "id": "09dcf456-3fee-485c-8029-183bc63d29d5"
+        },
+        {
+          "name": "tratata",
+          "id": "be55ebad-50f0-415e-9378-6586bd719c22"
+        },
+        {
+          "name": "wqe",
+          "id": "c0fe5555-a471-4008-8509-a605ced9d699"
+        },
+        {
+          "name": "g",
+          "id": "d4ee73e5-fe98-429c-ad62-9fcedff7e5f8"
         }
       ],
-      "createDate": "2022-08-13T00:30:29.072Z"
+      "createDate": "2022-08-14T15:18:42.404Z",
+      "reveal": true
     },
     {
-      "name": "va",
-      "id": "3c8d1a0b-d529-4957-859e-73aafc0f0c1d",
+      "name": "plan",
+      "voteTaskId": "37206cff-3911-4efa-8618-161a76b16582",
+      "id": "142afd2a-fec7-4f88-8db3-37dd51718303",
+      "tasks": [
+        {
+          "value": "task1",
+          "vote": 89,
+          "votes": [
+            {
+              "userId": "1caed546-89b0-4c15-ac66-45209250d27b",
+              "vote": 8
+            },
+            {
+              "userId": "9f2ce551-bb72-4d60-b972-eb14cd235cc4",
+              "vote": 34
+            }
+          ],
+          "id": "37206cff-3911-4efa-8618-161a76b16582"
+        },
+        {
+          "value": "task2",
+          "vote": 16,
+          "votes": [
+            {
+              "userId": "9f2ce551-bb72-4d60-b972-eb14cd235cc4",
+              "vote": 8
+            },
+            {
+              "userId": "1caed546-89b0-4c15-ac66-45209250d27b",
+              "vote": 8
+            }
+          ],
+          "id": "411adbdc-72fb-4196-aa33-e42e01d565ae"
+        },
+        {
+          "value": "task3",
+          "vote": "21",
+          "votes": [
+            {
+              "userId": "1caed546-89b0-4c15-ac66-45209250d27b",
+              "vote": 8
+            }
+          ],
+          "id": "48772b36-831b-4681-bc43-c77cdde2bb2f"
+        },
+        {
+          "value": "ww",
+          "vote": 0,
+          "votes": [],
+          "id": "7bcb55b6-5761-413f-a971-787a681ac4bd"
+        }
+      ],
+      "players": [
+        {
+          "name": "Marat",
+          "id": "9f2ce551-bb72-4d60-b972-eb14cd235cc4"
+        },
+        {
+          "name": "Tra",
+          "id": "1caed546-89b0-4c15-ac66-45209250d27b"
+        }
+      ],
+      "createDate": "2022-08-14T15:33:13.552Z",
+      "reveal": true
+    },
+    {
+      "name": "g",
+      "voteTaskId": "57361a24-8d9e-48cd-bf1a-d94e6d26df96",
+      "id": "0526eea9-cc6d-4fcc-ab98-13a78a290f9f",
+      "tasks": [
+        {
+          "value": "t1",
+          "vote": 89,
+          "votes": [
+            {
+              "userId": "9f2ce551-bb72-4d60-b972-eb14cd235cc4",
+              "vote": 13
+            }
+          ],
+          "id": "57361a24-8d9e-48cd-bf1a-d94e6d26df96"
+        }
+      ],
+      "players": [
+        {
+          "name": "Marat",
+          "id": "9f2ce551-bb72-4d60-b972-eb14cd235cc4"
+        },
+        {
+          "name": "g",
+          "id": "d4ee73e5-fe98-429c-ad62-9fcedff7e5f8"
+        }
+      ],
+      "createDate": "2022-08-14T20:13:17.033Z",
+      "reveal": false
+    },
+    {
+      "name": "f",
+      "voteTaskId": null,
+      "id": "8998d077-01d0-4135-95ce-2abb11ab9b44",
       "tasks": [],
       "players": [
         {
-          "name": "marat",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
+          "name": "f",
+          "id": "c3079b85-8029-4929-b086-47af272c41db"
         }
       ],
-      "createDate": "2022-08-13T00:39:35.424Z"
+      "createDate": "2022-08-15T00:12:00.496Z"
     },
     {
-      "name": "h",
-      "id": "d80e2c0f-342d-4635-a46f-ddac3d80730b",
-      "tasks": [],
-      "players": [],
-      "createDate": "2022-08-13T00:42:41.216Z"
-    },
-    {
-      "name": "hhh",
-      "id": "bf326b86-c417-4f7a-ae22-47824e326176",
-      "tasks": [],
+      "name": "g",
+      "voteTaskId": "c880d140-b1c1-407a-b329-a4d4d403f8a5",
+      "id": "d29e6d67-ac33-4f29-b41c-dac7a27179e0",
+      "tasks": [
+        {
+          "value": "t",
+          "vote": 3,
+          "votes": [
+            {
+              "userId": "9f2ce551-bb72-4d60-b972-eb14cd235cc4",
+              "vote": 3
+            },
+            {
+              "userId": "d4ee73e5-fe98-429c-ad62-9fcedff7e5f8",
+              "vote": 3
+            },
+            {
+              "userId": "4a1acefa-bb9a-45cf-9d9d-ec25587a4c5b",
+              "vote": 2
+            }
+          ],
+          "id": "9f783b04-5573-4443-a833-29b1a34631ac"
+        },
+        {
+          "value": "bbb",
+          "vote": 8,
+          "votes": [
+            {
+              "userId": "9f2ce551-bb72-4d60-b972-eb14cd235cc4",
+              "vote": 8
+            }
+          ],
+          "id": "2e60e177-c7e0-4e82-a4a6-07f7dd7b6fe3"
+        },
+        {
+          "value": "qwe",
+          "vote": 21,
+          "votes": [
+            {
+              "userId": "9f2ce551-bb72-4d60-b972-eb14cd235cc4",
+              "vote": 21
+            }
+          ],
+          "id": "c880d140-b1c1-407a-b329-a4d4d403f8a5"
+        }
+      ],
       "players": [
         {
-          "name": "marat",
-          "id": "bd4cfba2-3bc4-4750-b7d5-779e9853a72e",
-          "createDate": "2022-08-12T23:13:27.397Z"
+          "name": "g",
+          "id": "d4ee73e5-fe98-429c-ad62-9fcedff7e5f8"
+        },
+        {
+          "name": "Marat",
+          "id": "9f2ce551-bb72-4d60-b972-eb14cd235cc4"
+        },
+        {
+          "name": "te",
+          "id": "4a1acefa-bb9a-45cf-9d9d-ec25587a4c5b"
         }
       ],
-      "createDate": "2022-08-13T00:44:14.023Z"
+      "createDate": "2022-08-15T00:24:38.249Z",
+      "reveal": true
     }
   ]
 }

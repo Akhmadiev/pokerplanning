@@ -1,12 +1,17 @@
 .board-square {
     position: fixed;
-    bottom: 10%;
+    bottom: 5%;
     width: 50%;
-    left: 1%;
+    left: 2%;
   }
   
 .players {
-  margin-left: 1%;
+  left: 2%;
+  top: 10%;
+  position: fixed;
+  max-width: 46%;
+  max-height: 60%;
+  overflow: auto;
 }
 
 .player-card {
@@ -14,7 +19,6 @@
   height: 100px;
   width: 70px;
   margin: 5px;
-  background: content-box radial-gradient(lightgreen, skyblue);;
   border-color: black;
   border: thick double #32a1ce;
   text-align: center;
@@ -34,8 +38,8 @@
 
 .board-el {
   margin: 5px;
-  width: 50px;
-  height: 50px;
+  width: 8%;
+  height: 100px;
 }
 
 .player-component {
@@ -44,15 +48,34 @@
 }
 
 .player-reveal {
-  margin-top: 1%;
-  margin-left: 1%;
+  position: fixed;
+  bottom: 20%;
+  left: 15%;
+  width: 20%;
 }
 
-.tasks {
-  width: 30%;
+.right {
+  bottom: 0%;
+  width: 50%;
+  right: 0%;
+  height: 100%;
+  position: fixed;
+  background: rgba(211,211,211, 0.3);
+}
+
+.tasks-total {
+  width: 46%;
   position: fixed;
   right: 1%;
   top: 10%;
+}
+
+.tasks {
+  overflow: auto;
+  max-height: 77%;
+  position: fixed;
+  width: 46%;
+  top: 17%
 }
 
 .parentDisable {
@@ -70,13 +93,74 @@
 }
 
 .rooms {
-  margin-left: 5%;
-}
-
-.room {
-  width: 50%;
+  position: fixed;
+  left: 3%;
+  overflow: auto;
+  width: 100%;
+  font-size: 24px;
+  top: 25%;
 }
 
 table, th, td {
   border:1px solid black;
+}
+
+:root {
+  --color-bg: #2C2C32;
+  --color-active: #0f7dc6;
+}
+
+header {
+  background-color: var(--color-bg);
+  padding: 1.5rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+header > a {
+  color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+header > a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+main {
+  min-height: calc(100vh - 85px - 22px);
+  padding-top: 1.5rem;
+}
+
+main a {
+  text-decoration: none;
+  font-style: italic;
+}
+main a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  color: var(--color-active);
+  cursor: default;
+}
+
+.container-footer {
+  font-size: large;
+  position: fixed;
+  bottom: 0%;
+  left: 45%;
+  width: 10%;
+}
+.loginBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
 }

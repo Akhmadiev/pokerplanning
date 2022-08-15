@@ -93,7 +93,6 @@ class App extends React.Component {
   }
 
   render() {
-    debugger;
     // const { isLoading, mutateAsync } = useMutation(
     //   'create country',
     //   (data) => CountryService.create(data),

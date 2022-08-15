@@ -17,12 +17,12 @@ const NewRoom = () => {
 
     const onChange = (evt) => {
         var value = evt.target.value;
-        setRoomData({name: value});
+        setRoomData({name: value, voteTaskId: null});
     }
 
     return (
         <div>
-            <div className="input-group mb-3" style={{ width: "40%", marginTop: '2%', marginLeft: '2%' }}>
+            <div className="input-group mb-3" style={{ position: "fixed", top: "10%", width: "30%", left: "2%" }}>
                 <input
                     onChange={(evt) => onChange(evt)}
                     type="text"

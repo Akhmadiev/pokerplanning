@@ -10,7 +10,6 @@ const RequireAuth = ({ children }) => {
   if (!userData) {
     return <Navigate to='/login' state={{ from: location }} />
   }
-
   QueryService.createUser(fromPage.replace('/', ''), userData);
   return children;
 }
