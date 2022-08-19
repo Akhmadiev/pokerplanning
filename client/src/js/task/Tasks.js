@@ -1,13 +1,9 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Task from './Task';
 
 const Tasks = (props) => {
-  const hanldeOnUpdateInputValue = (evt) => {
-    var value = evt.target.value;
-  }
-
   const totalVote = props.tasks.reduce((a, v) => a = a + v.vote, 0);
   const rows = [];
       
@@ -16,10 +12,6 @@ const Tasks = (props) => {
       task={props.tasks[i]}
       voteTaskId={props.voteTaskId}
       created={true}
-    // selected={this.props.tasks[i].selected}
-    // onVoteSelect={() => this.props.onVoteSelect(i)}
-    // onVoteChange={(evt) => this.props.onUpdateVoteValue(evt, i)} key={i} delete={true}
-    // onClick={() => this.props.onTaskDelete(i)}
     />);
   }
 

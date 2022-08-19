@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { QueryService } from './Services/QueryService';
+import { QueryService } from '../../services/QueryService';
 import { useQuery } from 'react-query';
-import NewRoom from './NewRoom';
 import { Link } from 'react-router-dom';
+import NewRoom from './NewRoom';
 
 const Rooms = () => {
-  const { data, error, isError, isLoading } = useQuery(['rooms'], () => QueryService.getRooms());
+  const { data, isLoading } = useQuery(['rooms'], () => QueryService.getRooms());
   
   if (isLoading) {
     return <h1>Loading...</h1>

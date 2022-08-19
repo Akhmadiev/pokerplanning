@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 
-const Player = (props) => {
+const User = (props) => {
     return (
         <div className="player-component">
             <div className="player-card"><span style={{ visibility: "visible" }}>{props.vote}</span></div>
@@ -10,4 +10,4 @@ const Player = (props) => {
     );
 }
 
-export default Player;
+export default User;

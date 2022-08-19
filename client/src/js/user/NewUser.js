@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import { QueryService } from './Services/QueryService';
+import { QueryService } from '../../services/QueryService';
 import { useMutation } from 'react-query';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Login = () => {
+const NewUser = () => {
     const [userData, setUserData] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -49,4 +49,4 @@ const Login = () => {
     );
 }
 
-export default Login;
+export default NewUser;

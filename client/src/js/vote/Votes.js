@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
-import { QueryService } from './Services/QueryService';
+import { QueryService } from '../../services/QueryService';
 import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
 

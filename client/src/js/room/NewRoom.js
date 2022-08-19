@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import './App.css';
 import { useMutation } from 'react-query';
-import { QueryService } from './Services/QueryService';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+import { QueryService } from '../../services/QueryService';
+import '../../App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NewRoom = () => {
     const navigate = useNavigate();
     const [roomData, setRoomData] = useState('');
-    const { isLoading, isError, error, mutate } = useMutation(async () => { await QueryService.createRoom(roomData) },
+    const { mutate } = useMutation(async () => { await QueryService.createRoom(roomData) },
         {
             onSuccess: () => {
                 navigate(`/${roomData.id}`);

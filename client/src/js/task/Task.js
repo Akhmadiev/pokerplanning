@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import './App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { QueryService } from './Services/QueryService';
+import { QueryService } from '../../services/QueryService';
 import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+import io from "socket.io-client";
 
 const Task = (props) => {
-    const cookies = new Cookies();
-    const userData = cookies.get('PlanningAuth');
+    const socket = io.connect("http://localhost:3001");
     const [taskData, setTaskData] = useState({});
     const location = useLocation();
     const fromPage = location.pathname || '/';
     const createTask = useMutation(async () => { await QueryService.createTask(fromPage.replace('/', ''), taskData) }, {
         onSuccess: () => { 
             setTaskData({ value: "", vote: 0, votes: Array(0) });
+            socket.emit("join_room", "data");
         }
     });
     const deleteTask = useMutation(async (taskId) => { await QueryService.deleteTask(fromPage.replace('/', ''), taskId) });
     const voteTask = useMutation(async (taskId) => { return await QueryService.voteTask(fromPage.replace('/', ''), taskId) }, {
         onSuccess: (data) => {
+            debugger
+            socket.emit("join_room", data);
         }
     });
     const task = props.task;

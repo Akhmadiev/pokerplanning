@@ -1,17 +1,17 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { QueryService } from './Services/QueryService';
+import { QueryService } from '../../services/QueryService';
 import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
 
-const Players = (props) => {
+const Users = (props) => {
   const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
   const location = useLocation();
   const fromPage = location.pathname || '/';
   const room = props.room;
   const users = room.players;
-  const votes = room.tasks.filter(x => x.id == room.voteTaskId)[0]?.votes;
+  const votes = room.tasks.filter(x => x.id === room.voteTaskId)[0]?.votes;
   const reveal = useMutation(async () => {
     var voteSum = 0;
     var stop = false;
@@ -64,4 +64,4 @@ const Players = (props) => {
   );
 }
 
-export default Players;
+export default Users;

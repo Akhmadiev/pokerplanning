@@ -1,6 +1,6 @@
 import { useLocation, Navigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import { QueryService } from '../Services/QueryService';
+import { QueryService } from '../services/QueryService';
 
 const RequireAuth = ({ children }) => {
   const location = useLocation();
