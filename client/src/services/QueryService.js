@@ -14,21 +14,25 @@ export const QueryService = {
 	},
 	async createUser(roomId, data) {
 		const roomData = await this.getRoom(roomId);
-		if (!data.id) {
-			data.id = v4();
-		}
-
-		if (!roomData.data.players.map(x => x.id).includes(data.id)) {
-			roomData.data.players.push(data);
+		if (!roomData.data.users.map(x => x.id).includes(data.id)) {
+			roomData.data.users.push(data);
 			return axios.put(`/rooms/${roomId}`, roomData.data, {
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-Type': 'application/json' }
 			})
 		}
+	},
+	async deleteUser(roomId, userId) {
+		const roomData = await this.getRoom(roomId);
+		roomData.data.users = roomData.data.users.filter(x => x.id !== userId);
+
+		return axios.put(`/rooms/${roomId}`, roomData.data, {
+			headers: { 'Content-Type': 'application/json' }
+		});
 	},
 	async createRoom(data) {
 		data.id = v4();
 		data.tasks = Array(0);
-		data.players = Array(0);
+		data.users = Array(0);
 		data.createDate = new Date();
 
 		return axios.post(`/rooms`, data, {

@@ -5,7 +5,7 @@
     left: 2%;
   }
   
-.players {
+.users {
   left: 2%;
   top: 10%;
   position: fixed;
@@ -23,6 +23,14 @@
   border: thick double #32a1ce;
   text-align: center;
   
+}
+
+.player-delete {
+  visibility: hidden;
+}
+
+.player-component:hover .player-delete {
+  visibility: visible;
 }
 
 .player-card span{

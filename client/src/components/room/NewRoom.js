@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { QueryService } from '../../services/QueryService';
@@ -8,16 +8,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const NewRoom = () => {
     const navigate = useNavigate();
     const [roomData, setRoomData] = useState('');
-    const { mutate } = useMutation(async () => { await QueryService.createRoom(roomData) },
-        {
-            onSuccess: () => {
-                navigate(`/${roomData.id}`);
-            }
-        });
+    const { mutate } = useMutation(async () => {
+        await QueryService.createRoom(roomData);
+    }, {
+        onSuccess: () => {
+            navigate(`/${roomData.id}`);
+        }
+    });
 
     const onChange = (evt) => {
         var value = evt.target.value;
-        setRoomData({name: value, voteTaskId: null});
+        setRoomData({ name: value, voteTaskId: null });
     }
 
     return (
@@ -32,7 +33,7 @@ const NewRoom = () => {
                     aria-describedby="basic-addon2" />
                 <div className="input-group-append">
                     <button
-                        onClick={() => mutate({name: "test"})}
+                        onClick={() => mutate({ name: "test" })}
                         className="btn btn-outline-secondary"
                         type="button"
                         style={{ backgroundColor: "#90EE90" }}>

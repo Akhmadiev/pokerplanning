@@ -18,14 +18,14 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
-    socket.on("join_room", (data) => {
-        console.log("data");
-        console.log(data);
-    // socket.join(data);
+  socket.on("join_room", (data) => {
+    console.log(`on join room ${data.roomId}`);
+    socket.join(data.roomId);
   });
 
-  socket.on("send_message", (data) => {
-    socket.to(data.room).emit("receive_message", data);
+  socket.on("refetch", (roomId) => {
+    console.log(`refetch`);
+    socket.to(roomId).emit("refetch");
   });
 });
 

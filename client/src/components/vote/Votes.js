@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Cookies from 'universal-cookie';
 import { QueryService } from '../../services/QueryService';
 import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
+import DataContext from '../../contexts/DataContext';
+import SocketContext from '../../contexts/SocketContext';
 
 const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
 
-const Votes = (props) => {
+const Votes = () => {
+    const { socket } = useContext(SocketContext);
+    const { data, setData } = useContext(DataContext);
     const cookies = new Cookies();
     const userData = cookies.get('PlanningAuth');
     const userId = userData.id;
     const location = useLocation();
     const fromPage = location.pathname || '/';
-    const userVoteTask = useMutation(async (vote) => { await QueryService.userVoteTask(fromPage.replace('/', ''), props.voteTaskId, userId, vote) });
-    const vote = props.tasks.filter(x => x.id === props.voteTaskId)[0]?.votes.filter(x => x.userId === userId)[0]?.vote;
+    const userVoteTask = useMutation(async (vote) => { return await QueryService.userVoteTask(fromPage.replace('/', ''), data.voteTaskId, userId, vote) }, {
+        onSuccess: (response) => {
+            setData(response.data);
+            socket.emit("refetch", data.id);
+        }
+    });
+    const vote = data.tasks.filter(x => x.id === data.voteTaskId)[0]?.votes.filter(x => x.userId === userId)[0]?.vote;
     
     const renderSquare = (i) => {
         return (
             <button
-                disabled={props.voteTaskId ? false : true}
+                disabled={!data.voteTaskId || userVoteTask.isLoading}
                 key={i} type="button"
                 className="btn btn-secondary board-el"
                 onClick={() => userVoteTask.mutate(fibonacci_numbers[i])}
