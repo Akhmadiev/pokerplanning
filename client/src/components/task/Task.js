@@ -52,7 +52,7 @@ const Task = (props) => {
             {props.created ?
                 (
                     <div className="task">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" value={task?.description} placeholder="Description" disabled aria-label="Description" rows="2" />
+                        <textarea className="form-control" id="exampleFormControlTextarea1" value={task?.description} placeholder="Description" disabled aria-label="Description" rows="2" />
                         <div className="input-group mb-3" style={{ width: "100%" }}>
                             <input
                                 type="number"
@@ -85,7 +85,7 @@ const Task = (props) => {
                 ) :
                 (
                     <div>
-                        <textarea onChange={(evt) => onDescriptionChange(evt)} class="form-control" id="exampleFormControlTextarea1" value={newTask?.description} placeholder="Description" aria-label="Description" rows="2" />
+                        <textarea onChange={(evt) => onDescriptionChange(evt)} className="form-control" id="exampleFormControlTextarea1" value={newTask?.description} placeholder="Description" aria-label="Description" rows="2" />
                         <div className="input-group mb-3">
                             <input
                                 disabled={isLoading}

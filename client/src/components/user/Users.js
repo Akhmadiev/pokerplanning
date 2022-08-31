@@ -67,13 +67,13 @@ const Users = () => {
     const vote = votes?.filter(x => x.userId === player.id)[0]?.vote;
 
     rows.push(<div className="player-component" key={i}>
-      <button
+      {/* <button
         onClick={() => deleteUser.mutate(player.id)}
         style={{ width: "50%", marginLeft: "25%", backgroundColor: "#FFCCCB" }}
         className="btn btn-outline-secondary player-delete"
         type="button">
         X
-      </button>
+      </button> */}
       <div className="player-card" style={{ background: vote > 0 ? "content-box radial-gradient(lightgreen, blue)" : "content-box radial-gradient(lightgreen, skyblue)" }}><span style={{ visibility: data.reveal ? "visible" : "hidden" }}>{vote}</span></div>
       <div className="player-name">{player.name}</div>
     </div>);
