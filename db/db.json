@@ -1,0 +1,29 @@
+{
+  "rooms": [
+    {
+      "name": "ds",
+      "voteTaskId": "ddd71cdf-311b-4915-979e-4ab431668504",
+      "id": "2547fce7-40dd-4c35-9c2d-97ea61ec1fb1",
+      "tasks": [
+        {
+          "value": "we",
+          "vote": 0,
+          "votes": [],
+          "id": "ddd71cdf-311b-4915-979e-4ab431668504"
+        }
+      ],
+      "users": [
+        {
+          "name": "u1",
+          "id": "1b5b7a1a-c977-401d-92dd-31d2bee33ce0"
+        },
+        {
+          "name": "qwe",
+          "id": "4d09bc35-54d0-45a5-a3d7-617e3843e1cc"
+        }
+      ],
+      "createDate": "2022-08-31T15:39:06.846Z",
+      "reveal": false
+    }
+  ]
+}
