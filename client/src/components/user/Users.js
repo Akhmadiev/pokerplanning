@@ -15,7 +15,7 @@ const Users = () => {
   const location = useLocation();
   const fromPage = location.pathname || '/';
   const users = data.users;
-  const votes = data.tasks.filter(x => x.id === data.voteTaskId)[0]?.votes;
+  const votes = data.tasks?.filter(x => x.id === data.voteTaskId)[0]?.votes;
   const reveal = useMutation(async () => {
     var voteSum = 0;
     var stop = false;
@@ -62,7 +62,7 @@ const Users = () => {
   });
 
   var rows = [];
-  for (let i = 0; i < users.length; i++) {
+  for (let i = 0; i < users?.length; i++) {
     const player = users[i];
     const vote = votes?.filter(x => x.userId === player.id)[0]?.vote;
 

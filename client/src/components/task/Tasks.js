@@ -6,10 +6,10 @@ import DataContext from '../../contexts/DataContext';
 
 const Tasks = () => {
   const { data } = useContext(DataContext);
-  const totalVote = data.tasks.reduce((a, v) => a = a + v.vote, 0);
+  const totalVote = data.tasks?.reduce((a, v) => a = a + v.vote, 0);
   const rows = [];
       
-  for (let i = 0; i < data.tasks.length; i++) {
+  for (let i = 0; i < data.tasks?.length; i++) {
     rows.push(<Task
       key={i}
       task={data.tasks[i]}

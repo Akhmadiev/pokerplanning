@@ -1,7 +1,7 @@
 .board-square {
     position: fixed;
     bottom: 5%;
-    width: 50%;
+    width: 63%;
     left: 2%;
   }
   
@@ -9,7 +9,7 @@
   left: 2%;
   top: 10%;
   position: fixed;
-  max-width: 46%;
+  max-width: 56%;
   max-height: 60%;
   overflow: auto;
 }
@@ -58,13 +58,13 @@
 .player-reveal {
   position: fixed;
   bottom: 20%;
-  left: 15%;
-  width: 20%;
+  left: 14.5%;
+  width: 30%;
 }
 
 .right {
   bottom: 0%;
-  width: 50%;
+  width: 40%;
   right: 0%;
   height: 100%;
   position: fixed;
@@ -72,7 +72,7 @@
 }
 
 .tasks-total {
-  width: 46%;
+  width: 38%;
   position: fixed;
   right: 1%;
   top: 10%;
@@ -82,7 +82,7 @@
   overflow: auto;
   max-height: 77%;
   position: fixed;
-  width: 46%;
+  width: 38%;
   top: 17%
 }
 

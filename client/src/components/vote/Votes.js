@@ -24,12 +24,12 @@ const Votes = () => {
             socket.emit("refetch", data.id);
         }
     });
-    const vote = data.tasks.filter(x => x.id === data.voteTaskId)[0]?.votes.filter(x => x.userId === userId)[0]?.vote;
+    const vote = data.tasks?.filter(x => x.id === data.voteTaskId)[0]?.votes.filter(x => x.userId === userId)[0]?.vote;
     
     const renderSquare = (i) => {
         return (
             <button
-                disabled={!data.voteTaskId || userVoteTask.isLoading}
+                disabled={userVoteTask.isLoading}
                 key={i} type="button"
                 className="btn btn-secondary board-el"
                 onClick={() => userVoteTask.mutate(fibonacci_numbers[i])}
