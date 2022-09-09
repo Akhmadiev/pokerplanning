@@ -12,38 +12,17 @@ const Users = () => {
   const { socket } = useContext(SocketContext);
   const { data, setData } = useContext(DataContext);
   const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  const votesSum = Array(89 + 1).fill(0);
   const location = useLocation();
   const fromPage = location.pathname || '/';
   const users = data.users;
   const votes = data.tasks?.filter(x => x.id === data.voteTaskId)[0]?.votes;
   const reveal = useMutation(async () => {
-    var voteSum = 0;
-    var stop = false;
-    data.tasks.forEach((x) => {
-      if (x.id === data.voteTaskId) {
-        voteSum = x.votes.reduce((a, v) => a = a + v.vote, 0);
-        voteSum = voteSum / x.votes.length;
-        fibonacci_numbers.forEach((number, index) => {
-          if (!stop && voteSum <= number) {
-            if (index === 0) {
-              voteSum = fibonacci_numbers[index];
-            } else if (index === fibonacci_numbers.length - 1) {
-              voteSum = fibonacci_numbers[fibonacci_numbers.length - 1];
-            } else {
-              const dif_a = voteSum - fibonacci_numbers[index];
-              const dif_b = voteSum - fibonacci_numbers[index + 1];
-              if (Math.abs(dif_b) < Math.abs(dif_a)) {
-                voteSum = fibonacci_numbers[index + 1];
-              } else {
-                voteSum = fibonacci_numbers[index];
-              }
-            }
-            stop = true;
-          }
-        });
-      }
+    var votingTask = data.tasks.filter(x => x.id === data.voteTaskId)[0];
+    votingTask.votes.forEach(x => {
+      votesSum[x.vote]++;
     });
-    
+    var voteSum = votesSum.indexOf(Math.max(...votesSum));
     const revealResult = await QueryService.revealCards(fromPage.replace('/', ''), data.voteTaskId, voteSum);
     socket.emit("refetch", data.id);
 

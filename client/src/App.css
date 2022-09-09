@@ -29,9 +29,9 @@
   visibility: hidden;
 }
 
-.player-component:hover .player-delete {
+/* .player-component:hover .player-delete {
   visibility: visible;
-}
+} */
 
 .player-card span{
   margin-top: 50%;

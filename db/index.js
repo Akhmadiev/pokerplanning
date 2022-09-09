@@ -5,7 +5,7 @@ const middlewares = jsonServer.defaults();
 const port = 3004;
 const cors = require('cors');
 const corsOptions = {
-  origin: "https://marat13.ru",
+  origin: "http://localhost:3000",
   methods: ["GET", "POST", "PUT"]
 };
 

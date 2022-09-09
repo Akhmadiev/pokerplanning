@@ -21,7 +21,7 @@ const App = () => {
     }
   });
   const [data, setData] = useState({});
-  const [socket, setSocket] = useState(io.connect("http://95.213.216.147:3001"));
+  const [socket, setSocket] = useState(io.connect("http://localhost:3001"));
 
   return (
     <React.StrictMode>

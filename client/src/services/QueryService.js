@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { v4 } from 'uuid';
 
-const API_URL = 'http://95.213.216.147:3004'
+const API_URL = 'http://localhost:3004'
 
 axios.defaults.baseURL = API_URL
 
@@ -86,14 +86,11 @@ export const QueryService = {
 	async revealCards(roomId, voteTaskId, voteSum) {
 		const roomData = await this.getRoom(roomId);
 		roomData.data.reveal = !roomData.data.reveal;
-
-		if (roomData.data.reveal) {
-			roomData.data.tasks.forEach((x) => {
-				if (x.id === voteTaskId) {
-					x.vote = voteSum;
-				}
-			});
-		}
+		roomData.data.tasks.forEach((x) => {
+			if (x.id === voteTaskId) {
+				x.vote = roomData.data.reveal ? voteSum : 0;
+			}
+		});
 		
 		return axios.put(`/rooms/${roomId}`, roomData.data, {
 			headers: { 'Content-Type': 'application/json' },
