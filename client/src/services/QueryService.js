@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { v4 } from 'uuid';
 
-const API_URL = 'http://localhost:3004'
+const API_URL = process.env.REACT_APP_DB || 'http://localhost:3004'
 
 axios.defaults.baseURL = API_URL
 
