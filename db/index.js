@@ -1,11 +1,17 @@
-const jsonServer = require('json-server')
-const newJsonServer = jsonServer.create()
-const router = jsonServer.router('db.json')
-const middlewares = jsonServer.defaults()
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router('db.json');
+const middlewares = jsonServer.defaults();
+const port = 3004;
+const cors = require('cors');
+const corsOptions = {
+  origin: "https://marat13.ru",
+  methods: ["GET", "POST", "PUT"]
+};
 
-newJsonServer.use(middlewares);
-newJsonServer.use(router);
+server.use(cors(corsOptions));
 
-newJsonServer.listen(3004, () => {
-  console.log(`JSON Server is running on port ${3004}`)
-});
+server.use(middlewares);
+server.use(router);
+
+server.listen(port);
