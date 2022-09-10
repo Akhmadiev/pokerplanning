@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { CustomLink } from './CustomLink';
 import Cookies from 'universal-cookie';
 import DataContext from '../contexts/DataContext';
-import { useState } from 'react';
 import { useContext } from 'react';
 
 const Layout = () => {

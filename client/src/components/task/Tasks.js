@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Task from './Task';
@@ -6,7 +6,6 @@ import DataContext from '../../contexts/DataContext';
 
 const Tasks = () => {
   const { data } = useContext(DataContext);
-  const totalVote = data.tasks?.reduce((a, v) => a = a + v.vote, 0);
   const rows = [];
       
   for (let i = 0; i < data.tasks?.length; i++) {

@@ -39,11 +39,18 @@ export const QueryService = {
 			headers: { 'Content-Type': 'application/json' },
 		})
 	},
-	async createTask(roomId, data) {
+	async createTask(roomId, taskValue, description) {
 		const roomData = await this.getRoom(roomId);
-		data.id = v4();
 
-		roomData.data.tasks.push(data);
+		var task = {
+			id: v4(),
+			value: taskValue,
+			description: description,
+			vote: 0,
+			votes: Array(0)
+		};
+
+		roomData.data.tasks.push(task);
 		return axios.put(`/rooms/${roomId}`, roomData.data, {
 			headers: { 'Content-Type': 'application/json' },
 		})

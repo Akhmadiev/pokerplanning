@@ -26,7 +26,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("refetch", (roomId) => {
-    socket.to(roomId).emit("refetch");
+    socket.broadcast.to(roomId).emit("refetch");
   });
 });
 

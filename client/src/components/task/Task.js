@@ -11,13 +11,15 @@ const Task = (props) => {
     const { socket } = useContext(SocketContext);
     const task = props.task;
     const { data, setData } = useContext(DataContext);
-    const [newTask, setNewTask] = useState({});
+    const [taskValue, setTaskValue] = useState("");
+    const [description, setDescription] = useState("");
     const location = useLocation();
     const fromPage = location.pathname || '/';
-    const createTask = useMutation(async () => { return await QueryService.createTask(fromPage.replace('/', ''), newTask) }, {
+    const createTask = useMutation(async () => { return await QueryService.createTask(fromPage.replace('/', ''), taskValue, description) }, {
         onSuccess: (response) => {
             setData(response.data);
-            setNewTask({ value: "", vote: 0, votes: Array(0), description: "" });
+            setTaskValue("");
+            setDescription("");
             socket.emit("refetch", data.id);
         }
     });
@@ -38,13 +40,12 @@ const Task = (props) => {
     
     const onChange = (evt) => {
         var value = evt.target.value;
-        setNewTask({ value: value, vote: 0, votes: Array(0), description: newTask.description });
+        setTaskValue(value);
     }
 
     const onDescriptionChange = (evt) => {
         var value = evt.target.value;
-        newTask.description = value;
-        setNewTask(newTask);
+        setDescription(value);
     }
 
     return (
@@ -85,7 +86,13 @@ const Task = (props) => {
                 ) :
                 (
                     <div>
-                        <textarea onChange={(evt) => onDescriptionChange(evt)} className="form-control" id="exampleFormControlTextarea1" value={newTask?.description} placeholder="Description" aria-label="Description" rows="2" />
+                        <textarea
+                            onChange={(evt) => onDescriptionChange(evt)}
+                            className="form-control" id="exampleFormControlTextarea1"
+                            value={description}
+                            placeholder="Description"
+                            aria-label="Description"
+                            rows="2" />
                         <div className="input-group mb-3">
                             <input
                                 disabled={isLoading}
@@ -94,7 +101,7 @@ const Task = (props) => {
                                 placeholder="JIRA link"
                                 aria-label="JIRA link"
                                 aria-describedby="basic-addon2"
-                                value={newTask?.value}
+                                value={taskValue}
                                 onChange={(evt) => onChange(evt)}
                             />
                             <div className="input-group-append">

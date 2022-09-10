@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 

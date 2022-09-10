@@ -80,7 +80,7 @@
 
 .tasks {
   overflow: auto;
-  max-height: 77%;
+  max-height: 85%;
   position: fixed;
   width: 38%;
   top: 10%
