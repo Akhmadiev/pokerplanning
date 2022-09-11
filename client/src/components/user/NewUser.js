@@ -25,13 +25,14 @@ const NewUser = () => {
     return (
         <div>
             <div className="loginBackground"></div>
-            <div className="input-group mb-3" style={{ position: "fixed", top: "35%", width: "30%", height: "5%", left: "35%" }}>
+            <div className="input-group mb-3" style={{ position: "fixed", top: "35%", width: "20%", height: "5%", left: "40%" }}>
                 <input
                     onChange={(evt) => onChange(evt)}
                     type="text"
                     className="form-control"
                     placeholder="Username"
                     aria-label="Username"
+                    maxLength={10}
                     aria-describedby="basic-addon2" />
                 <div className="input-group-append">
                     <button

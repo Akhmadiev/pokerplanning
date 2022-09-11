@@ -50,6 +50,10 @@ export const QueryService = {
 			votes: Array(0)
 		};
 
+		if (!roomData.data.voteTaskId) {
+			roomData.data.voteTaskId = task.id;
+		}
+
 		roomData.data.tasks.push(task);
 		return axios.put(`/rooms/${roomId}`, roomData.data, {
 			headers: { 'Content-Type': 'application/json' },

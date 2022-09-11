@@ -14,7 +14,7 @@ const Layout = () => {
             <header>
                 <CustomLink to="/">Rooms:</CustomLink>
                 <span style={{color: "white" }}>{data?.name}</span>
-                <span style={{color: "var(--color-active)", position: "fixed", right: "1%"}}><span style={{color: "white"}}>Name:</span> <b><i>{userData?.name}</i></b></span>
+                <span style={{color: "var(--color-active)", position: "fixed", right: "1%"}}><span style={{color: "white"}}>User:</span> <b><i>{userData?.name}</i></b></span>
             </header>
 
             <main className="container">
