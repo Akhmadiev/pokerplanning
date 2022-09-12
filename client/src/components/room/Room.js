@@ -38,9 +38,9 @@ const Room = () => {
         });
         // eslint-disable-next-line
     }, [socket]);
-    
+
     if (roomData.isLoading) {
-        return <h1>Loading...</h1>
+        return <h1 className='loading'>Loading...</h1>
     }
 
     return (

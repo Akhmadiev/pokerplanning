@@ -29,6 +29,10 @@
   visibility: hidden;
 }
 
+.loading {
+  margin-top: 10%;
+}
+
 /* .player-component:hover .player-delete {
   visibility: visible;
 } */
