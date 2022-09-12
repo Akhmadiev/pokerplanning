@@ -79,7 +79,7 @@
   width: 38%;
   position: fixed;
   right: 1%;
-  top: 5%;
+  top: 8%;
 }
 
 .tasks {
@@ -87,7 +87,7 @@
   max-height: 85%;
   position: fixed;
   width: 38%;
-  top: 10%
+  top: 12%
 }
 
 .parentDisable {

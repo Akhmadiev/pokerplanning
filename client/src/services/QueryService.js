@@ -33,6 +33,7 @@ export const QueryService = {
 		data.id = v4();
 		data.tasks = Array(0);
 		data.users = Array(0);
+		data.voteTotal = 0;
 		data.createDate = new Date();
 
 		return axios.post(`/rooms`, data, {
@@ -107,6 +108,8 @@ export const QueryService = {
 				x.vote = roomData.data.reveal ? voteSum : 0;
 			}
 		});
+
+		roomData.data.voteTotal = roomData.data.tasks.map(x => x.vote).reduce((a, b) => a + b, 0);
 		
 		return axios.put(`/rooms/${roomId}`, roomData.data, {
 			headers: { 'Content-Type': 'application/json' },
