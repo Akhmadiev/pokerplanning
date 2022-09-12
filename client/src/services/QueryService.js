@@ -61,6 +61,11 @@ export const QueryService = {
 	},
 	async deleteTask(roomId, taskId) {
 		const roomData = await this.getRoom(roomId);
+
+		if (roomData.data.voteTaskId === taskId) {
+			roomData.data.voteTaskId = null;
+		}
+
 		roomData.data.tasks = roomData.data.tasks.filter(x => x.id !== taskId);
 		return axios.put(`/rooms/${roomId}`, roomData.data, {
 			headers: { 'Content-Type': 'application/json' },
