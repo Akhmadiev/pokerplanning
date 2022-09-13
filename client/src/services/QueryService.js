@@ -68,6 +68,8 @@ export const QueryService = {
 		}
 
 		roomData.data.tasks = roomData.data.tasks.filter(x => x.id !== taskId);
+		roomData.data.voteTotal = roomData.data.tasks.map(x => x.vote).reduce((a, b) => a + b, 0);
+
 		return axios.put(`/rooms/${roomId}`, roomData.data, {
 			headers: { 'Content-Type': 'application/json' },
 		})
