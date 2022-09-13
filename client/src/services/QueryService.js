@@ -102,10 +102,12 @@ export const QueryService = {
 	},
 	async revealCards(roomId, voteTaskId, voteSum) {
 		const roomData = await this.getRoom(roomId);
-		roomData.data.reveal = !roomData.data.reveal;
+		if (!roomData.data.reveal) {
+			roomData.data.reveal = true;
+		}
 		roomData.data.tasks.forEach((x) => {
 			if (x.id === voteTaskId) {
-				x.vote = roomData.data.reveal ? voteSum : 0;
+				x.vote = voteSum;
 			}
 		});
 

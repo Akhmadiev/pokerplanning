@@ -8,6 +8,7 @@ import DataContext from '../../contexts/DataContext';
 import SocketContext from '../../contexts/SocketContext';
 
 const Task = (props) => {
+    const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
     const { socket } = useContext(SocketContext);
     const task = props.task;
     const { data, setData } = useContext(DataContext);
@@ -35,6 +36,14 @@ const Task = (props) => {
             socket.emit("refetch", data.id);
         }
     });
+    const voteChange = useMutation(async (data) => {
+        return await QueryService.revealCards(fromPage.replace('/', ''), data.taskId, data.vote);
+    }, {
+        onSuccess: (response) => {
+            setData(response.data);
+            socket.emit("refetch", data.id);
+        }
+    });
 
     const isLoading = createTask.isLoading || deleteTask.isLoading || voteTask.isLoading;
     
@@ -48,6 +57,31 @@ const Task = (props) => {
         setDescription(value);
     }
 
+    const onVoteChange = (evt, taskId) => {
+        var currentVote = data.tasks.filter(x => x.id === taskId)[0].vote;
+        var vote = getNextVote(currentVote, Number(evt.target.value));
+        var voteData = {
+            vote: Number(vote),
+            taskId: taskId
+        };
+        voteChange.mutate(voteData);
+    }
+
+    const getNextVote = (prevVote, vote) => {
+        var maxVote = 89;
+        var minVote = 1;
+        if (vote > maxVote) {
+            return minVote;
+        }
+
+        if (vote < minVote) {
+            return maxVote;
+        }
+
+        let index = fibonacci_numbers.indexOf(prevVote);
+        return vote > prevVote ? fibonacci_numbers[index + 1] : fibonacci_numbers[index - 1];
+    }
+
     return (
         <div>
             {props.created ?
@@ -57,12 +91,16 @@ const Task = (props) => {
                         <div className="input-group mb-3" style={{ width: "100%" }}>
                             <input
                                 type="number"
-                                className="form-control"
+                                className="form-control voteInput"
                                 aria-label="JIRA"
-                                disabled
                                 value={task?.vote}
+                                pattern='[0-5]'
+                                checked
                                 aria-describedby="basic-addon2"
-                                // onChange={(evt) => voteChange.mutate(props.task.id, evt.target.value)}
+                                onKeyDown={(e) => {
+                                    e.preventDefault();
+                                 }}
+                                onChange={(evt) => onVoteChange(evt, props.task.id)}
                                 style={{ maxWidth: "9%" }} />
                             <a style={{ width: "66%", textAlign: "center", border: "thick double #32a1ce", backgroundColor: props.voteTaskId === task.id ? "#90EE90" : "" }} href={task?.value}>{task?.value}</a>
                             <button

@@ -99,6 +99,14 @@
   width: 100%;
 }
 
+.voteInput {
+  caret-color: transparent;
+}
+
+.voteInput:hover {
+  cursor: default;
+}
+
 #popup  {
   position: absolute;
   z-index: 2;

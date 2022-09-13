@@ -22,7 +22,6 @@ const App = () => {
   });
   const [data, setData] = useState({});
   const [socket, setSocket] = useState(io.connect(process.env.REACT_APP_SERVER || "http://localhost:3001"));
-  console.log(process.env);
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
