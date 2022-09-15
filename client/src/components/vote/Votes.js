@@ -31,7 +31,7 @@ const Votes = () => {
             <button
                 disabled={userVoteTask.isLoading}
                 key={i} type="button"
-                className="btn btn-secondary board-el"
+                className="btn btn-secondary board-el board-square-button"
                 onClick={() => userVoteTask.mutate(fibonacci_numbers[i])}
                 style={{ backgroundColor: vote === fibonacci_numbers[i] ? "black" : "" }}
             >
