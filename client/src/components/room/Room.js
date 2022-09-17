@@ -40,7 +40,7 @@ const Room = () => {
     }, [socket]);
 
     if (roomData.isLoading) {
-        return <h1 className='loading'>Loading...</h1>
+        return <div className='container'><div className='loading'></div></div>
     }
 
     return (

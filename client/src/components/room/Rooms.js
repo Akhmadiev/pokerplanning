@@ -16,7 +16,7 @@ const Rooms = () => {
   });
   
   if (isLoading) {
-    return <h1 className='loading'>Loading...</h1>
+    return <div className='container'><div className='loading'></div></div>
   }
 
   const rooms = data.data;
