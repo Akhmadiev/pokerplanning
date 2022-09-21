@@ -34,7 +34,6 @@ const Rooms = () => {
   return (
     <div>
       <NewRoom />
-      <h3 style={{ left: "2%", top: "20%", position: "fixed", fontStyle: "italic" }}>Rooms:</h3>
       <div className="rooms">
         {rows}
       </div>

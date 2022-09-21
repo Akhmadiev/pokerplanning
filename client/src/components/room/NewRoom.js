@@ -28,8 +28,8 @@ const NewRoom = () => {
                     onChange={(evt) => onChange(evt)}
                     type="text"
                     className="form-control"
-                    placeholder="Room name"
-                    aria-label="Room name"
+                    placeholder="Name"
+                    aria-label="Name"
                     aria-describedby="basic-addon2" />
                 <div className="input-group-append">
                     <button
