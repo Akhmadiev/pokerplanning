@@ -16,8 +16,6 @@ const io = new Server(server, {
   },
 });
 
-console.log(process.env.REACT_APP_CLIENT);
-
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
