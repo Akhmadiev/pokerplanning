@@ -36,6 +36,10 @@
   visibility: hidden;
 }
 
+.player-component:hover .player-delete {
+  visibility: visible;
+}
+
 .container {
   display: flex;
   align-items: center;
