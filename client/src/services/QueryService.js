@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { v4 } from 'uuid';
+import Cookies from 'universal-cookie';
 
 const API_URL = process.env.REACT_APP_DB || 'http://localhost:3004'
 
@@ -30,10 +31,15 @@ export const QueryService = {
 		});
 	},
 	async createRoom(data) {
+		const cookies = new Cookies();
+		const userData = cookies.get('PlanningAuth');
+    	const userId = userData.id;
+
 		data.id = v4();
 		data.tasks = Array(0);
 		data.users = Array(0);
 		data.voteTotal = 0;
+		data.admin = userId;
 		data.createDate = new Date();
 
 		return axios.post(`/rooms`, data, {

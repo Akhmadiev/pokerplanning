@@ -6,8 +6,12 @@ import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
 import DataContext from '../../contexts/DataContext';
 import SocketContext from '../../contexts/SocketContext';
+import Cookies from 'universal-cookie';
 
 const Task = (props) => {
+    const cookies = new Cookies();
+    const userData = cookies.get('PlanningAuth');
+    const userId = userData.id;
     const fibonacci_numbers = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
     const { socket } = useContext(SocketContext);
     const task = props.task;
@@ -16,6 +20,8 @@ const Task = (props) => {
     const [description, setDescription] = useState("");
     const location = useLocation();
     const fromPage = location.pathname || '/';
+    const isAdmin = data.admin === userId;
+    console.log(isAdmin);
     const createTask = useMutation(async () => { return await QueryService.createTask(fromPage.replace('/', ''), taskValue, description) }, {
         onSuccess: (response) => {
             setData(response.data);
@@ -92,6 +98,7 @@ const Task = (props) => {
                             <input
                                 type="number"
                                 className="form-control voteInput"
+                                disabled={isLoading || !isAdmin}
                                 aria-label="JIRA"
                                 value={task?.vote}
                                 pattern='[0-5]'
@@ -102,9 +109,10 @@ const Task = (props) => {
                                  }}
                                 onChange={(evt) => onVoteChange(evt, props.task.id)}
                                 style={{ maxWidth: "9%" }} />
-                            <a style={{ width: "66%", textAlign: "center", border: "thick double #32a1ce", backgroundColor: props.voteTaskId === task.id ? "#90EE90" : "" }} href={task?.value}>{task?.value}</a>
+                            <a style={{ width: !isAdmin ? "91%" : "66%", textAlign: "center", border: "thick double #32a1ce", backgroundColor: props.voteTaskId === task.id ? "#90EE90" : "" }} href={task?.value} target="_blank">{task?.value}</a>
                             <button
-                                disabled={isLoading}
+                                hidden={!isAdmin}
+                                disabled={isLoading || !isAdmin}
                                 onClick={() => voteTask.mutate(props.task.id)}
                                 style={{ width: "10%", backgroundColor: "#90EE90" }}
                                 className="btn btn-outline-secondary"
@@ -112,7 +120,8 @@ const Task = (props) => {
                                 Vote
                             </button>
                             <button
-                                disabled={isLoading}
+                                hidden={!isAdmin}
+                                disabled={isLoading || !isAdmin}
                                 onClick={() => deleteTask.mutate(props.task.id)}
                                 style={{ width: "15%", backgroundColor: "#FFCCCB" }}
                                 className="btn btn-outline-secondary"
@@ -123,9 +132,10 @@ const Task = (props) => {
                     </div>
                 ) :
                 (
-                    <div>
+                    <div hidden={!isAdmin}>
                         <textarea
                             onChange={(evt) => onDescriptionChange(evt)}
+                            disabled={isLoading || !isAdmin}
                             className="form-control" id="exampleFormControlTextarea1"
                             value={description}
                             placeholder="Description"
@@ -133,7 +143,7 @@ const Task = (props) => {
                             rows="2" />
                         <div className="input-group mb-3">
                             <input
-                                disabled={isLoading}
+                                disabled={isLoading || !isAdmin}
                                 type="text"
                                 className="form-control"
                                 placeholder="JIRA link"
@@ -144,7 +154,7 @@ const Task = (props) => {
                             />
                             <div className="input-group-append">
                                 <button
-                                    disabled={isLoading}
+                                    disabled={isLoading || !isAdmin}
                                     onClick={(evt) => createTask.mutate()}
                                     style={{ backgroundColor: "#90EE90" }}
                                     className="btn btn-outline-secondary"

@@ -7,8 +7,12 @@ import { useLocation } from 'react-router-dom';
 import DataContext from '../../contexts/DataContext';
 import { useContext } from 'react';
 import SocketContext from '../../contexts/SocketContext';
+import Cookies from 'universal-cookie';
 
 const Users = () => {
+  const cookies = new Cookies();
+  const userData = cookies.get('PlanningAuth');
+  const userId = userData.id;
   const { socket } = useContext(SocketContext);
   const { data, setData } = useContext(DataContext);
   const votesSum = Array(89 + 1).fill(0);
@@ -16,6 +20,7 @@ const Users = () => {
   const fromPage = location.pathname || '/';
   const users = data.users;
   const votes = data.tasks?.filter(x => x.id === data.voteTaskId)[0]?.votes;
+  const isAdmin = data.admin === userId;
   const reveal = useMutation(async () => {
     var votingTask = data.tasks.filter(x => x.id === data.voteTaskId)[0];
     votingTask.votes.forEach(x => {
@@ -48,7 +53,7 @@ const Users = () => {
       <div className="users">
         {rows}
       </div>
-      <button disabled={!data.voteTaskId || reveal.isLoading} type="button" className="btn btn-primary btn-lg player-reveal" onClick={() => reveal.mutate()}>Reveal</button>
+      <button hidden={!data.voteTaskId || reveal.isLoading || !isAdmin} style={{ backgroundColor: !data.voteTaskId || reveal.isLoading || !isAdmin ? "lightgrey" : "" }} type="button" className="btn btn-primary btn-lg player-reveal" onClick={() => reveal.mutate()}>Reveal</button>
     </div>
   );
 }

@@ -29,7 +29,7 @@ const Votes = () => {
     const renderSquare = (i) => {
         return (
             <button
-                disabled={userVoteTask.isLoading}
+                disabled={userVoteTask.isLoading || !data.voteTaskId}
                 key={i} type="button"
                 className="btn btn-secondary board-el board-square-button"
                 onClick={() => userVoteTask.mutate(fibonacci_numbers[i])}
