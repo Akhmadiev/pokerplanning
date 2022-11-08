@@ -16,7 +16,7 @@ const App = () => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false
+        refetchInterval: 1000 * 10
       }
     }
   });
@@ -30,9 +30,9 @@ const App = () => {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Layout />}>
-                  <Route path="/" element={<Rooms />} />
+                  <Route path="/" element={<RequireAuth><Rooms /></RequireAuth>} />
+                  <Route element={<RequireAuth><NewRoom /></RequireAuth>} />
                   <Route path=":id" element={<RequireAuth><Room /></RequireAuth>} />
-                  <Route path="new" element={<NewRoom />} />
                   <Route path="login" element={<NewUser />} />
                 </Route>
               </Routes>

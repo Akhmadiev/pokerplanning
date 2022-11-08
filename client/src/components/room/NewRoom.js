@@ -33,7 +33,7 @@ const NewRoom = () => {
                     aria-describedby="basic-addon2" />
                 <div className="input-group-append">
                     <button
-                        onClick={() => mutate({ name: "test" })}
+                        onClick={() => mutate()}
                         className="btn btn-outline-secondary"
                         type="button"
                         style={{ backgroundColor: "#90EE90" }}>

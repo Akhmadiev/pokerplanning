@@ -6,7 +6,7 @@ require('dotenv').config();
 const port = 3004;
 const cors = require('cors');
 const corsOptions = {
-  origin: process.env.REACT_APP_CLIENT || "http://localhost:3000",
+  origin: "*",
   methods: ["GET", "POST", "PUT"]
 };
 console.log(process.env.REACT_APP_CLIENT);

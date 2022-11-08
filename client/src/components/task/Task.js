@@ -21,7 +21,6 @@ const Task = (props) => {
     const location = useLocation();
     const fromPage = location.pathname || '/';
     const isAdmin = data.admin === userId;
-    console.log(isAdmin);
     const createTask = useMutation(async () => { return await QueryService.createTask(fromPage.replace('/', ''), taskValue, description) }, {
         onSuccess: (response) => {
             setData(response.data);
