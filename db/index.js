@@ -7,7 +7,7 @@ const port = 3004;
 const cors = require('cors');
 const corsOptions = {
   origin: "*",
-  methods: ["GET", "POST", "PUT"]
+  methods: ["GET", "POST", "PUT", "DELETE"]
 };
 console.log(process.env.REACT_APP_CLIENT);
 server.use(cors(corsOptions));

@@ -80,6 +80,9 @@ export const QueryService = {
 			headers: { 'Content-Type': 'application/json' },
 		})
 	},
+	async deleteRoom(roomId) {
+		return axios.delete(`/rooms/${roomId}`);
+	},
 	async userVoteTask(roomId, voteTaskId, userId, vote) {
 		const roomData = await this.getRoom(roomId);
 		roomData.data.tasks.forEach((x) => {

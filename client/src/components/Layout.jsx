@@ -1,12 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import { CustomLink } from './CustomLink';
 import Cookies from 'universal-cookie';
-import DataContext from '../contexts/DataContext';
-import { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = () => {
-    const { data } = useContext(DataContext);
     const cookies = new Cookies();
     const userData = cookies.get('PlanningAuth');
     
