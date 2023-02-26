@@ -8,19 +8,16 @@ const Layout = () => {
     
     return (
         <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{height: "5vh", width: "60vw"}}>
             <div className="collapse navbar-collapse" id="navbarNav" style={{color: "rgb(106, 165, 219)"}}>
                 <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <a className="nav-link" href="/" style={{fontSize: "20px", color: "rgb(106, 165, 219)"}}>Rooms</a>
-                    </li>
-                        <li className="nav-item">
-                        <span className="nav-link" style={{position: "fixed", right: "0%", fontSize: "20px"}}>User name: <i style={{color: "rgb(106, 165, 219)"}}>{userData?.name}</i></span>
+                        <a className="nav-link" href="/" style={{color: "rgb(106, 165, 219)", fontSize: '2vh', fontStyle: 'italic'}}>Rooms</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <main className="container">
+        <main>
         <Outlet />
         </main>
         </>

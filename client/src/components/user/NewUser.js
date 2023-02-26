@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { v4 } from 'uuid';
+import '../../App.css';
 
 const NewUser = () => {
     const [userData, setUserData] = useState('');
@@ -25,14 +26,14 @@ const NewUser = () => {
     return (
         <div>
             <div className="loginBackground"></div>
-            <div className="input-group mb-3" style={{ position: "fixed", top: "35%", width: "20%", height: "5%", left: "40%" }}>
+            <div className="input-group mb-3" style={{width: "20vw", left: "40vw" }}>
                 <input
                     onChange={(evt) => onChange(evt)}
                     type="text"
                     className="form-control"
                     placeholder="Username"
                     aria-label="Username"
-                    maxLength={10}
+                    maxLength={8}
                     aria-describedby="basic-addon2" />
                 <div className="input-group-append">
                     <button

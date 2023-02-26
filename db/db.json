@@ -1,4 +1,57 @@
 {
   "rooms": [
+    {
+      "name": "sdsd",
+      "voteTaskId": "a342ae48-25ba-4158-aa8f-f55d3dab2234",
+      "id": "5136ff2f-2055-47f0-a258-67f0e40cad7c",
+      "tasks": [
+        {
+          "id": "f3c9d524-7ed6-4081-8e1f-07ec616f796f",
+          "value": "rwww",
+          "description": "rw",
+          "vote": 8,
+          "votes": [
+            {
+              "userId": "b0902ce9-0b27-43ff-9f9e-dbfb25d0e519",
+              "vote": 8
+            }
+          ]
+        },
+        {
+          "id": "a342ae48-25ba-4158-aa8f-f55d3dab2234",
+          "value": "qweewwe",
+          "description": "qwe",
+          "vote": 34,
+          "votes": [
+            {
+              "userId": "b0902ce9-0b27-43ff-9f9e-dbfb25d0e519",
+              "vote": 34
+            }
+          ]
+        },
+        {
+          "id": "a8be0623-e2cd-47fc-8cbb-b09ee6ea4fa0",
+          "value": "dwww",
+          "description": "dw",
+          "vote": 21,
+          "votes": [
+            {
+              "userId": "b0902ce9-0b27-43ff-9f9e-dbfb25d0e519",
+              "vote": 21
+            }
+          ]
+        }
+      ],
+      "users": [
+        {
+          "id": "b0902ce9-0b27-43ff-9f9e-dbfb25d0e519",
+          "name": "test"
+        }
+      ],
+      "voteTotal": 63,
+      "admin": "b0902ce9-0b27-43ff-9f9e-dbfb25d0e519",
+      "createDate": "2023-02-26T16:50:29.234Z",
+      "reveal": false
+    }
   ]
 }

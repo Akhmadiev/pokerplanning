@@ -31,9 +31,10 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Layout />}>
                   <Route path="/" element={<RequireAuth><Rooms /></RequireAuth>} />
-                  <Route path="/delete" element={<RequireAuth><Rooms /></RequireAuth>} />
+                  <Route path="/admin" element={<RequireAuth><Rooms /></RequireAuth>} />
                   <Route element={<RequireAuth><NewRoom /></RequireAuth>} />
                   <Route path=":id" element={<RequireAuth><Room /></RequireAuth>} />
+                  <Route path=":id/admin" element={<RequireAuth><Room /></RequireAuth>} />
                   <Route path="login" element={<NewUser />} />
                 </Route>
               </Routes>

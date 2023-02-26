@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import '../../App.css';
+import '../../css/Room.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams } from 'react-router-dom';
 import { QueryService } from '../../services/QueryService';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import Users from '../user/Users';
 import Votes from '../vote/Votes';
 import Tasks from '../task/Tasks';
@@ -18,7 +18,7 @@ const Room = () => {
     const { setData } = useContext(DataContext);
     const { id } = useParams();
     const { socket } = useContext(SocketContext);
-    socket.emit("join_room", { roomId: id, user: userData });
+    socket.emit("join_room", { roomId: id, userId: userData.id });
     const roomData = useQuery(['room'], async () => {
         const creaetUserResult = await QueryService.createUser(id, userData);
         if (creaetUserResult) {
@@ -31,10 +31,19 @@ const Room = () => {
             setData(response.data);
         }
     });
+    const deleteUser = useMutation(async (userId) => { return await QueryService.deleteUser(id, userId); }, {
+        onSuccess: (response) => {
+          setData(response.data);
+          socket.emit("refetch", response.data.id);
+        }
+      });
 
     useEffect(() => {
         socket.on("refetch", () => {
             roomData.refetch();
+        });
+        socket.on("userDisconnect", (userId) => {
+            deleteUser.mutate(userId);
         });
         // eslint-disable-next-line
     }, [socket]);
@@ -44,10 +53,14 @@ const Room = () => {
     }
 
     return (
-        <div>
-            <Users />
-            <Tasks />
-            <Votes />
+        <div className='room'>
+            <div className='room-left'>
+                <Users />
+                <Votes />
+            </div>
+            <div className='room-right'>
+                <Tasks />
+            </div>            
         </div>
     )
 }

@@ -1,0 +1,14 @@
+.room-left {
+    width: 60%;
+    height: 100%;
+    position: fixed;
+}
+
+.room-right {
+    bottom: 0%;
+    width: 40%;
+    right: 0%;
+    height: 100%;
+    position: fixed;
+    background: rgba(211,211,211, 0.3);
+}

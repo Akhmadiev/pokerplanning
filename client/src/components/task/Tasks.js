@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import '../../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Task from './Task';
 import DataContext from '../../contexts/DataContext';
+import '../../css/Tasks.css';
 
 const Tasks = () => {
   const { data } = useContext(DataContext);
@@ -18,13 +18,11 @@ const Tasks = () => {
   }
 
   return (
-    <div className="right">
-      <div className="tasks-total">
-        <div style={{ position: "fixed" }}><h4>Total:<span className="badge badge-secondary" style={{ color: "black", right: 0 }}>{data.voteTotal ?? 0}</span></h4></div>
-        <div className="tasks">
-          {rows}
-          <Task />
-        </div>
+    <div>
+      <div className="tasks-total"><h4>Total:<span>{data.voteTotal ?? 0}</span></h4></div>
+      <div className="tasks">
+        {rows}
+        <Task />
       </div>
     </div>
   );

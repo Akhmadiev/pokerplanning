@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import '../../App.css';
+import '../../css/Task.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryService } from '../../services/QueryService';
 import { useMutation } from 'react-query';
@@ -20,8 +20,9 @@ const Task = (props) => {
     const [description, setDescription] = useState("");
     const location = useLocation();
     const fromPage = location.pathname || '/';
-    const isAdmin = data.admin === userId;
-    const createTask = useMutation(async () => { return await QueryService.createTask(fromPage.replace('/', ''), taskValue, description) }, {
+    const roomId = fromPage.replaceAll('/', '').replaceAll('admin', '');
+    const isAdmin = data.admin === userId || fromPage.includes('admin');
+    const createTask = useMutation(async () => { return await QueryService.createTask(roomId, taskValue, description) }, {
         onSuccess: (response) => {
             setData(response.data);
             setTaskValue("");
@@ -29,20 +30,20 @@ const Task = (props) => {
             socket.emit("refetch", data.id);
         }
     });
-    const deleteTask = useMutation(async (taskId) => { return await QueryService.deleteTask(fromPage.replace('/', ''), taskId); }, {
+    const deleteTask = useMutation(async (taskId) => { return await QueryService.deleteTask(roomId, taskId); }, {
         onSuccess: (response) => {
             setData(response.data);
             socket.emit("refetch", data.id);
         }
     });
-    const voteTask = useMutation(async (taskId) => { return await QueryService.voteTask(fromPage.replace('/', ''), taskId); }, {
+    const voteTask = useMutation(async (taskId) => { return await QueryService.voteTask(roomId, taskId); }, {
         onSuccess: (response) => {
             setData(response.data);
             socket.emit("refetch", data.id);
         }
     });
     const voteChange = useMutation(async (data) => {
-        return await QueryService.revealCards(fromPage.replace('/', ''), data.taskId, data.vote);
+        return await QueryService.revealCards(roomId, data.taskId, data.vote);
     }, {
         onSuccess: (response) => {
             setData(response.data);
@@ -91,12 +92,12 @@ const Task = (props) => {
         <div>
             {props.created ?
                 (
-                    <div className="task">
+                    <div>
                         <textarea className="form-control" id="exampleFormControlTextarea1" value={task?.description} placeholder="Description" disabled aria-label="Description" rows="2" />
-                        <div className="input-group mb-3" style={{ width: "100%" }}>
+                        <div className="input-group mb-3">
                             <input
                                 type="number"
-                                className="form-control voteInput"
+                                className="form-control task-vote-input"
                                 disabled={isLoading || !isAdmin}
                                 aria-label="JIRA"
                                 value={task?.vote}
@@ -106,24 +107,24 @@ const Task = (props) => {
                                 onKeyDown={(e) => {
                                     e.preventDefault();
                                  }}
-                                onChange={(evt) => onVoteChange(evt, props.task.id)}
-                                style={{ maxWidth: "9%" }} />
-                            <a style={{ width: !isAdmin ? "91%" : "66%", textAlign: "center", border: "thick double #32a1ce", backgroundColor: props.voteTaskId === task.id ? "#90EE90" : "" }} href={task?.value} target="_blank">{task?.value}</a>
+                                onChange={(evt) => onVoteChange(evt, props.task.id)}/>
+                            <a
+                                className='task-vote-href'
+                                style={{backgroundColor: props.voteTaskId === task.id ? "#90EE90" : "" }}
+                                href={task?.value} target="_blank">
+                                {task?.value}
+                            </a>
                             <button
-                                hidden={!isAdmin}
                                 disabled={isLoading || !isAdmin}
                                 onClick={() => voteTask.mutate(props.task.id)}
-                                style={{ width: "10%", backgroundColor: "#90EE90" }}
-                                className="btn btn-outline-secondary"
+                                className="btn btn-outline-secondary task-vote-btn"
                                 type="button">
                                 Vote
                             </button>
                             <button
-                                hidden={!isAdmin}
                                 disabled={isLoading || !isAdmin}
                                 onClick={() => deleteTask.mutate(props.task.id)}
-                                style={{ width: "15%", backgroundColor: "#FFCCCB" }}
-                                className="btn btn-outline-secondary"
+                                className="btn btn-outline-secondary task-delete-btn"
                                 type="button">
                                 Delete
                             </button>

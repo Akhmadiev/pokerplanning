@@ -21,6 +21,11 @@ io.on("connection", (socket) => {
 
   socket.on("join_room", (data) => {
     socket.join(data.roomId);
+
+    socket.on('disconnect', function () {
+      socket.broadcast.to(data.roomId).emit('userDisconnect', data.userId);
+   });
+
   });
 
   socket.on("refetch", (roomId) => {

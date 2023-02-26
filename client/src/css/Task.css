@@ -1,0 +1,28 @@
+.task-vote-input {
+    caret-color: transparent;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.task-vote-input:hover {
+    cursor: default;
+}
+
+.task-vote-href {
+    border: thick double #32a1ce;
+    text-align: center;
+    width: 65%;
+    font-size: 1vw;
+}
+
+.task-vote-btn {
+    width: 10%;
+    font-size: 1vw;
+    background-color: #90EE90
+}
+
+.task-delete-btn {
+    width: 15%;
+    font-size: 1vw;
+    background-color: #FFCCCB
+}

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import '../../App.css';
+import '../../css/Rooms.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { QueryService } from '../../services/QueryService';
 import { useQuery } from 'react-query';
@@ -24,7 +24,7 @@ const Rooms = () => {
   });
   const location = useLocation();
   const fromPage = location.pathname || '/';
-  var isDelete = fromPage.replace('/', '') === 'delete';
+  var isDelete = fromPage.replace('/', '') === 'admin';
   
   if (isLoading) {
     return <div className='container'><div className='loading'></div></div>

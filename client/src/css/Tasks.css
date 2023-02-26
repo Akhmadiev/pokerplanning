@@ -1,0 +1,11 @@
+.tasks-total {
+    margin-top: 1vh;
+    margin-left: 1vw;
+}
+
+.tasks {
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    height: 95vh;
+    overflow: auto;
+}

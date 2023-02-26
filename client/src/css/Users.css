@@ -1,0 +1,26 @@
+.users {
+    height: 75vh;
+    padding-top: 1vh;
+    overflow: auto;
+}
+
+.users-card {
+    width: 8vw;
+    margin-left: 1.5vw;
+    display: inline-block;
+}
+
+.users-name {
+    font-size: 2vh;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.users-vote {
+    line-height: 16vh;
+    height: 20vh;
+    border: thick double #32a1ce;
+    border-radius: 5%;
+    font-size: 8vh;
+    text-align: center;
+}
